@@ -19,32 +19,12 @@ const Tab = createMaterialBottomTabNavigator();
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
-function HomeDrawer() {
+function TabsNavigator() {
   return (
-    <Drawer.Navigator>
-      <Drawer.Screen name="Home" component={Home} />
-      <Drawer.Screen name="Profile" component={Profile} />
-    </Drawer.Navigator>
-  );
-}
-
-function ProfileDrawer() {
-  return (
-    <Drawer.Navigator>
-      <Drawer.Screen name="Home" component={Home} />
-      <Drawer.Screen name="Profile" component={Profile} />
-    </Drawer.Navigator>
-  );
-}
-
-
- function App() {
-  return (
-  <NavigationContainer>
- <Tab.Navigator>
+   <Tab.Navigator>
       <Tab.Screen 
       name="Home" 
-      component={HomeDrawer} 
+      component={Home} 
       options={{
           tabBarLabel: 'Home',
           tabBarIcon: ({ color }) => (
@@ -54,7 +34,7 @@ function ProfileDrawer() {
       />
       <Tab.Screen 
       name="Profile" 
-      component={ProfileDrawer} 
+      component={Profile} 
            options={{
           tabBarLabel: 'Profile',
           tabBarIcon: ({ color }) => (
@@ -63,6 +43,18 @@ function ProfileDrawer() {
         }}
       />
     </Tab.Navigator>
+  );
+}
+
+ function App() {
+  return (
+  <NavigationContainer>
+  
+   <Drawer.Navigator>
+      <Drawer.Screen name="Home" component={TabsNavigator} />
+      <Drawer.Screen name="Profile" component={TabsNavigator} />
+    </Drawer.Navigator>
+  
   </NavigationContainer>
   );
 }
