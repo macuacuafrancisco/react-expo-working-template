@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import 'react-native-gesture-handler';
@@ -10,7 +11,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { createStackNavigator } from '@react-navigation/stack';
-
+import AnimatedSplash from "react-native-animated-splash-screen";
 
 import Home from './screens/Home';
 import Profile from './screens/Profile';
@@ -47,7 +48,21 @@ function TabsNavigator() {
 }
 
  function App() {
+ const [loading, setLoading] = useState(false);
+
+  setTimeout(() => {
+    setLoading(true);
+  }, 3000);
+  
   return (
+  <AnimatedSplash
+      translucent={true}
+      isLoaded={loading}
+      logoImage={require("./assets/splash.png")}
+      backgroundColor={"#FFFFFF"}
+      logoHeight={650}
+      logoWidth={550}
+    >
   <NavigationContainer>
   
    <Drawer.Navigator>
@@ -56,6 +71,10 @@ function TabsNavigator() {
     </Drawer.Navigator>
   
   </NavigationContainer>
+    </AnimatedSplash>
+    
+    
+
   );
 }
 
